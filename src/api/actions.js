@@ -18,6 +18,9 @@ export const apiRequestFinished = createAction(API_REQUEST_FINISHED);
 
 export const API_REPOS_LOADED = 'API_REPOS_LOADED';
 export const apiReposLoaded = createAction(API_REPOS_LOADED);
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
+export const setSearchQuery = createAction(SET_SEARCH_QUERY);
+
 
 export function apiGetRepoList(query){
     return function tempDispatch(dispatch){
@@ -25,6 +28,14 @@ export function apiGetRepoList(query){
         dispatch(apiRequestStarted({requestId}));
         return api.getRepos(query)
             .then(data=>{
+                let linksRegex = /https\S*\d/gm;
+                let relsRegex = /"(\S*)"/gm;
+                let links = data.headers.link.match(linksRegex);
+                let rels = data.headers.link.match(relsRegex);
+                data.rels = {};
+                rels.forEach((r, i) => {
+                    data.rels[r.replace(/['"]+/g, '')] = links[i];
+                });
                 dispatch(apiReposLoaded(data));
                 dispatch(apiRequestFinished({requestId}));
             })

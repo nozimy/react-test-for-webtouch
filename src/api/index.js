@@ -40,6 +40,7 @@ export function _request(params) {
 		.then((response) => {
 
 			let json = response.data;
+			let headers = response.headers;
 
 			// console.log('RESPONSE: ');
 			// console.log(json);
@@ -47,7 +48,7 @@ export function _request(params) {
 			if (json && json.error) {
 				return throwApiError(requestUrl, json.error, response.status);
 			}
-			return json;
+			return {json, headers};
 		})
 		.catch((error) => {
 			if (error.response && error.response.status) {

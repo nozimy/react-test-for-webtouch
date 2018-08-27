@@ -1,7 +1,7 @@
 import { Map, OrderedMap, List} from 'immutable';
 
 import {API_REQUEST_FINISHED, API_REQUEST_STARTED,
-	API_REPOS_LOADED} from './actions';
+	API_REPOS_LOADED, SET_SEARCH_QUERY} from './actions';
 
 const initialState  = Map({
 	loading: false,
@@ -10,9 +10,12 @@ const initialState  = Map({
 		last: null
 	}),
 	data: Map({
-		repos: List()
+		repos: Map({
+			data: List(),
+			rels: Map({}) //pagination
+		})
 	}),
-	submitError: null
+	searchQuery: ''
 });
 
 export default function ApiReducer(state = initialState, action){
@@ -31,10 +34,12 @@ export default function ApiReducer(state = initialState, action){
 					(action.payload.error ? action.payload.error.message : state.getIn(['errors', 'last']))
 				);
 		case API_REPOS_LOADED:
-			console.log('RESPONSE: ');
-			console.log(action.payload);
 			return state
-				.setIn(['data', 'repos'], List(action.payload))
+				.setIn(['data', 'repos', 'data'], List(action.payload.json))
+				.setIn(['data', 'repos', 'rels'], Map(action.payload.rels));
+		case SET_SEARCH_QUERY:
+			return state
+				.set('searchQuery', action.payload);
         
         default:
             return state;
