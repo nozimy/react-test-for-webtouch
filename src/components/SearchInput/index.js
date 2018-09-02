@@ -1,4 +1,30 @@
 import React from 'react';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    leftIcon: {
+      marginRight: theme.spacing.unit,
+    },
+    rightIcon: {
+      marginLeft: theme.spacing.unit,
+    },
+    iconSmall: {
+      fontSize: 20,
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 250,
+    },
+  });
 
 class SearchInput extends React.Component {
     constructor(props){
@@ -19,25 +45,40 @@ class SearchInput extends React.Component {
     }
 
     render(){
+        const { classes } = this.props;
         return (
             <div>
                 <form action="/search"
                     // onSubmit={this.handleSubmit}
                     >
-                    <input type="text" 
+                    <TextField 
+                        className={classes.textField}
+                        name="repo"
+                        label="Название репозитория"
+                        placeholder="Например: facebook/react"
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        margin="normal"
+                    />
+                    {/* <input type="text" 
                         name="repo" 
                         placeholder="For example user/repoName" 
                         value={this.state.value} 
-                        onChange={this.handleChange}/>
+                        onChange={this.handleChange}/> */}
                     {/* <button type="submit" 
                         value="Submit" 
                         onClick={()=>this.props.onSearch(this.state.value)}
                         >Найти</button> */}
-                    <input type="submit" value="Найти" />
+                    {/* <input type="submit" value="Найти" /> */}
+                    <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                        <SearchIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
+                        Найти forks
+                    </Button>
                 </form>
             </div>
         );
     }
 }
 
-export default SearchInput;
+// export default SearchInput;
+export default withStyles(styles)(SearchInput);

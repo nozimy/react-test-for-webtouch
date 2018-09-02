@@ -11,7 +11,7 @@ const initialState  = Map({
 	}),
 	data: Map({
 		repos: Map({
-			data: List(),
+			data: null,
 			rels: Map({}) //pagination
 		})
 	}),

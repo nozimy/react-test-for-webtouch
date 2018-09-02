@@ -52,9 +52,9 @@ export function _request(params) {
 		})
 		.catch((error) => {
 			if (error.response && error.response.status) {
-				return Promise.reject(error);
-			} else {
 				throwApiError(requestUrl, error.message, error.response.status)
+			} else {
+				return Promise.reject(error);
 			}
 		})
 }
