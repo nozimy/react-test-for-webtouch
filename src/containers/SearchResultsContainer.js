@@ -4,7 +4,7 @@ import SearchComponent from './../components/SearchComponent';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { apiGetRepoList, setSearchQuery} from './../api/actions'
-import queryString from 'qs';
+import qs from 'qs';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
@@ -35,7 +35,7 @@ class SearchResultsContainer extends React.Component{
     }
     request(){
         this.props.setSearchQuery(this.props.location.search);
-        const parsed = queryString.parse(this.props.location.search);
+        const parsed = qs.parse(this.props.location.search.slice(1));
         this.props.apiGetRepoList(parsed);
     }
     getRepos(){
@@ -43,7 +43,7 @@ class SearchResultsContainer extends React.Component{
     }
     render(){
         const {loading, error, pagination} = this.props;
-        const parsed = queryString.parse(this.props.location.search);
+        const parsed = qs.parse(this.props.location.search.slice(1));
         
         return (
             <Grid container justify="center" direction="column" alignItems="center" spacing={16}>
