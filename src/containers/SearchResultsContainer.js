@@ -65,7 +65,6 @@ class SearchResultsContainer extends React.Component{
                 </Grid>
             
                 <Grid item>
-                    {/* <div>{this.props.location.search}</div> */}
                     {
                         pagination.get('first') != null &&
                         <IconButton
@@ -83,7 +82,6 @@ class SearchResultsContainer extends React.Component{
                             to={`/search?repo=${parsed.repo}&page=${pagination.get('prev').match(/page=(\d+).*$/)[1]}`}
                             aria-label="Prev Page"
                         >
-                            {/* {pagination.get('prev').match(/page=(\d+).*$/)[1]} */}
                             <KeyboardArrowLeft />
                         </IconButton>
                     }
@@ -94,7 +92,6 @@ class SearchResultsContainer extends React.Component{
                             to={`/search?repo=${parsed.repo}&page=${pagination.get('next').match(/page=(\d+).*$/)[1]}`}
                             aria-label="Next Page"
                         >
-                            {/* {pagination.get('next').match(/page=(\d+).*$/)[1]} */}
                             <KeyboardArrowRight />
                         </IconButton>
                     }
@@ -108,14 +105,6 @@ class SearchResultsContainer extends React.Component{
                             <LastPageIcon />
                         </IconButton>
                     }
-                    
-                    {/* <div> */}
-                        {/* {pagination.get('first') != null ? <Link to={`/search?repo=${parsed.repo}&page=1`}>{'<<'}</Link> : null} */}
-                        {/* {pagination.get('prev') != null ? <Link to={`/search?repo=${parsed.repo}&page=${pagination.get('prev').match(/page=(\d+).*$/)[1]}`}>{pagination.get('prev').match(/page=(\d+).*$/)[1]}</Link> : null} */}
-                        {/* {parsed.page} */}
-                        {/* {pagination.get('next') != null? <Link to={`/search?repo=${parsed.repo}&page=${pagination.get('next').match(/page=(\d+).*$/)[1]}`}>{pagination.get('next').match(/page=(\d+).*$/)[1]}</Link> : null}
-                        {pagination.get('last') != null ? <Link to={`/search?repo=${parsed.repo}&page=${pagination.get('last').match(/page=(\d+).*$/)[1]}`}>{'>>'}</Link> : null} */}
-                    {/* </div> */}
                 </Grid>
             </Grid>
         );

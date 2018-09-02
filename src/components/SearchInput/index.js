@@ -49,7 +49,6 @@ class SearchInput extends React.Component {
         return (
             <div>
                 <form action="/search"
-                    // onSubmit={this.handleSubmit}
                     >
                     <TextField 
                         className={classes.textField}
@@ -60,16 +59,6 @@ class SearchInput extends React.Component {
                         onChange={this.handleChange}
                         margin="normal"
                     />
-                    {/* <input type="text" 
-                        name="repo" 
-                        placeholder="For example user/repoName" 
-                        value={this.state.value} 
-                        onChange={this.handleChange}/> */}
-                    {/* <button type="submit" 
-                        value="Submit" 
-                        onClick={()=>this.props.onSearch(this.state.value)}
-                        >Найти</button> */}
-                    {/* <input type="submit" value="Найти" /> */}
                     <Button type="submit" variant="contained" color="primary" className={classes.button}>
                         <SearchIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
                         Найти forks
@@ -80,5 +69,4 @@ class SearchInput extends React.Component {
     }
 }
 
-// export default SearchInput;
 export default withStyles(styles)(SearchInput);

@@ -20,7 +20,6 @@ class SearchResults extends React.Component {
                 </TableHead>
                 <TableBody>
                     {this.props.items.map((item, i) => (
-                        // <li key={i}>{item.full_name}</li>
                         <TableRow key={i}>
                             <TableCell component="th" scope="row">
                                 {item.full_name}

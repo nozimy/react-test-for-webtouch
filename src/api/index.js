@@ -34,16 +34,12 @@ export function _request(params) {
 
 	return axios({
 		url:`${apiUrl}${requestUrl}`,
-		// credentials: 'include',
 		...defaultParams, ...requestParams
 	})
 		.then((response) => {
 
 			let json = response.data;
 			let headers = response.headers;
-
-			// console.log('RESPONSE: ');
-			// console.log(json);
 
 			if (json && json.error) {
 				return throwApiError(requestUrl, json.error, response.status);
@@ -58,14 +54,6 @@ export function _request(params) {
 			}
 		})
 }
-
-// function getRepos(payload){
-//     return _request({
-// 		// url: `/repos?repos=${payload.repoName}&page=${payload.page}`,
-// 		url: '/repos/facebook/react/forks',
-//         ...defaultParams
-//     });
-// }
 
 function getRepos(payload){
     return _request(`/repos/${payload.repo}/forks?page=${payload.page}`);
