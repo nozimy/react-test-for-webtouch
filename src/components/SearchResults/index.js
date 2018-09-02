@@ -15,7 +15,6 @@ class SearchResults extends React.Component {
                         <TableCell>Владелец</TableCell>
                         <TableCell numeric>Кол-во звезд</TableCell>
                         <TableCell>Ссылка</TableCell>
-                        <TableCell>Избранное</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -32,9 +31,6 @@ class SearchResults extends React.Component {
                             </TableCell>
                             <TableCell> 
                                 <a href={item.html_url}>{item.html_url}</a>
-                            </TableCell>
-                            <TableCell> 
-                                -
                             </TableCell>
                         </TableRow>
                         )
