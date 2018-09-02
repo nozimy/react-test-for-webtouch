@@ -4,7 +4,7 @@ import SearchComponent from './../components/SearchComponent';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { apiGetRepoList, setSearchQuery} from './../api/actions'
-import queryString from 'query-string';
+import queryString from 'qs';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';

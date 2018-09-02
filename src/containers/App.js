@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import SearchInput from './../components/SearchInput'
-import {Link} from 'react-router-dom';
 import SearchComponent from './../components/SearchComponent';
 import Grid from '@material-ui/core/Grid';
 
